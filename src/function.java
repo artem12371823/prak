@@ -183,7 +183,7 @@ public class function {
     public  void fileGet(){
         String[] carArray=new String[1000];
         try {
-            Scanner scr = new Scanner(new File("C:\\Users\\Artem\\Desktop\\lab3.txt"));
+            Scanner scr = new Scanner(new File("C:\\Users\\artem\\Desktop\\lab3.txt"));
             int fg=0;
             while(scr.hasNext()){
                 carArray[fg]=scr.nextLine();
@@ -195,7 +195,7 @@ public class function {
     }
 
     public  void fileSave(){
-        try(FileWriter writer = new FileWriter("C:\\Users\\Artem\\Desktop\\lab3.txt", false))
+        try(FileWriter writer = new FileWriter("C:\\Users\\artem\\Desktop\\lab3.txt", false))
         {
 
             writer.write("");
@@ -212,6 +212,26 @@ public class function {
 
             System.out.println(ex.getMessage());
             sc.nextInt();
+        }
+    }
+    public  void find(){
+        fileGet();
+        Scanner sc = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Поиск по цвету машины");
+        System.out.println();
+        System.out.print("Введите цвет для поиска - ");
+        String change = sc.nextLine();
+        for (int i =0;i<car2.getCarArray().length;i++) {
+            String[] words={};
+            if(car2.getCarArray()[i]!=null)
+            {
+                words = car2.getCarArray()[i].split(";");
+            }
+            if(car2.getCarArray()[i]!=null&& words[2].equals(change))
+            {
+                System.out.println(i+1 + ") "+car2.getCarArray()[i]);
+            }
         }
     }
 }
